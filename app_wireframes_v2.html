@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APP 线框图（V2：内嵌示意图）</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;background:#f8f8f8;color:#111;margin:0}
+.container{max-width:1000px;margin:0 auto;padding:24px}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.header h1{font-size:22px;margin:0}
+.meta{font-size:12px;color:#555;margin-bottom:18px}
+.screen{margin:28px 0;padding:0 8px}
+.screen h2{font-size:18px;margin:6px 0 10px 0}
+.phone{width:375px;height:812px;border:2px solid #000;border-radius:24px;padding:12px;margin:0 auto;background:#fff;position:relative}
+.status{position:absolute;left:24px;right:24px;top:10px;height:6px;border:1px solid #000;border-radius:6px}
+.headerbar{margin-top:16px;height:40px;border:1.5px solid #000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.section{border:1.5px dashed #000;border-radius:10px;padding:10px;margin:10px 0;background:#fff}
+.hero .title{font-size:18px;font-weight:700;margin-bottom:4px}
+.hero .subtitle{font-size:12px;color:#333}
+.field .label,.picker .label{font-size:12px;color:#111;margin-bottom:6px}
+.inputbox{border:1.5px solid #000;border-radius:8px;height:36px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:#777}
+.chipwrap{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid #000;border-radius:20px;padding:6px 10px;font-size:11px}
+.button{height:40px;border:2px solid #000;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:10px 0;font-weight:700}
+.picker .select{border:1.5px solid #000;border-radius:8px;padding:8px 10px;font-size:12px}
+.cardswrap{display:grid;grid-template-columns:1fr;gap:8px}
+.card{border:1.5px solid #000;border-radius:10px;padding:10px;margin:8px 0;background:#fff}
+.ctitle{font-weight:700;margin-bottom:4px}
+.ctext{font-size:12px;color:#333}
+.note{font-size:12px;color:#333;border:1px dotted #000;border-radius:8px;padding:8px;margin:8px 0;background:#fff}
+.listrow{display:flex;justify-content:space-between;align-items:center;border:1.5px solid #000;border-radius:10px;padding:10px;margin:8px 0;font-size:13px}
+.devicecard{border:1.5px solid #000;border-radius:10px;padding:12px;margin:8px 0}
+.dev_title{font-weight:700}
+.dev_sub{font-size:12px;color:#333}
+.toggle{display:flex;justify-content:space-between;align-items:center}
+.switch{border:1.5px solid #000;border-radius:20px;padding:4px 10px;font-size:12px}
+.placeholder.chart{border:2px solid #000;border-radius:10px;padding:8px;margin:10px 0;text-align:center;font-size:12px;color:#333}
+.summary{border:1.5px solid #000;border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+.sumtitle{font-size:12px;color:#333}
+.sumvalue{font-size:20px;font-weight:700;margin:4px 0}
+.sumsub{font-size:12px;color:#333}
+.narrative{border:1.5px dashed #000;border-radius:10px;padding:10px;margin:10px 0;background:#fff}
+.nartitle{font-size:12px;font-weight:700;margin-bottom:4px}
+.bullet ul{margin:6px 0 6px 18px;padding:0;font-size:12px}
+.tabs{display:flex;gap:6px}
+.tab{flex:1;border:1.5px solid #000;border-radius:10px;padding:8px;text-align:center;font-size:12px}
+.tab.active{border-style:solid}
+.timeline{border-left:2px solid #000;margin:8px 0 8px 10px;padding-left:10px}
+.timeitem{display:flex;align-items:center;margin:8px 0}
+.dot{width:8px;height:8px;border:1.5px solid #000;border-radius:50%;display:inline-block;margin-right:8px;background:#fff}
+.metric .big{font-size:32px;font-weight:800;letter-spacing:1px}
+.metric .caption{font-size:12px;color:#333}
+/* Ticket */
+.ticket{border:2px dashed #000;border-radius:12px;padding:10px;background:#fff}
+.ticket-head,.ticket-foot{font-size:12px;text-align:center;margin:6px 0}
+.ticket-title{font-size:12px;font-weight:700;margin-top:8px}
+.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>APP 线框图（V2：把“右边的东西”画进屏幕）</h1>
+  </div>
+  <div class="meta">黑白线框 + 内嵌示意图（能源流、24h 时间轴、SoC 曲线、分解柱状/饼图、计划对比、收据票据等）。</div>
+
+<div class="screen" id="s-1-1">
+        <h2>1.1 欢迎 & ROI 输入（Hook）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="section hero"><div class="title">您每年能省多少钱？</div><div class="subtitle">输入您的信息，我们立即计算您的能源优化潜力。</div></div><div class="section field"><div class="label">您的邮政编码</div><div class="inputbox">例如 94043</div></div><div class="section chips"><div class="label">选择您拥有的设备</div><div class="chipwrap"><span class="chip">EV</span><span class="chip">Powerwall</span><span class="chip">Nest</span><span class="chip">Solar</span></div></div><div class="button primary">计算我的节省额</div>
+        </div>
+    </div>
+<div class="screen" id="s-1-2">
+        <h2>1.2 ROI 结果（Aha!）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="section metric"><div class="big">$1,650</div><div class="caption">预计年度节省（示意）</div></div><div class="section picker"><div class="label">检测到电力公司：PG&E</div><div class="select">选择套餐（E-TOU-C / EV2-A）</div></div><div class="cardswrap"><div class="card small"><div class="ctitle">🚗 智能EV充电优化</div><div class="ctext">+$650/年（示意）</div></div><div class="card small"><div class="ctitle">❄️ HVAC热能转移</div><div class="ctext">+$400/年（示意）</div></div><div class="card small"><div class="ctitle">🔋 电池套利</div><div class="ctext">+$600/年（示意）</div></div></div><div class="button primary">立即开始节省</div>
+        </div>
+    </div>
+<div class="screen" id="s-3-1">
+        <h2>3.1 首页仪表盘（Magic+Proof）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="summary"><div class="sumtitle">本月节省</div><div class="sumvalue">$85.50</div><div class="sumsub">昨日 +$4.50（点击查看详情）</div></div><div class="narrative"><div class="nartitle">AI 代理人状态</div><div class="nartext">AI优化已激活。当前电价：$0.55/kWh（高峰）。Powerwall 正在为家庭供电，并将 Nest 设为 24°C 以节省电费。</div></div><div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="220" viewBox="0 0 320 220">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L6,3 z" fill="black" />
+      </marker>
+    </defs>
+    <rect x="10" y="10" width="300" height="200" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><rect x="135" y="85" width="50" height="50" rx="8" ry="8" fill="none" stroke="black"/><text x="145" y="115" font-size="11" font-family="monospace" font-weight="normal">家</text><circle cx="160" cy="35" r="16" fill="white" stroke="black"/><text x="149" y="38" font-size="11" font-family="monospace" font-weight="normal">太阳</text><circle cx="160" cy="185" r="16" fill="white" stroke="black"/><text x="151" y="188" font-size="11" font-family="monospace" font-weight="normal">电网</text><circle cx="70" cy="110" r="16" fill="white" stroke="black"/><text x="60" y="113" font-size="11" font-family="monospace" font-weight="normal">电池</text><circle cx="250" cy="110" r="16" fill="white" stroke="black"/><text x="244" y="113" font-size="11" font-family="monospace" font-weight="normal">EV</text><line x1="160" y1="51" x2="160" y2="85" stroke="black" marker-end="url(#arrow)"/><line x1="160" y1="135" x2="160" y2="169" stroke="black" marker-end="url(#arrow)"/><line x1="86" y1="110" x2="135" y2="110" stroke="black" marker-end="url(#arrow)"/><line x1="185" y1="110" x2="234" y2="110" stroke="black" marker-end="url(#arrow)"/><text x="166" y="74" font-size="10" font-family="monospace" font-weight="normal">→ 家 0.8kW</text><text x="166" y="153" font-size="10" font-family="monospace" font-weight="normal">家 → 电网 0kW</text><text x="90" y="105" font-size="10" font-family="monospace" font-weight="normal">电池 → 家 1.2kW</text><text x="188" y="105" font-size="10" font-family="monospace" font-weight="normal">家 → EV 0kW</text></svg></div><div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120"><rect x="10" y="10" width="300" height="100" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><line x1="30" y1="60" x2="290" y2="60" stroke="black"/><line x1="30.0" y1="54" x2="30.0" y2="66" stroke="black"/><text x="22.0" y="80" font-size="10" font-family="monospace" font-weight="normal">0h</text><line x1="95.0" y1="54" x2="95.0" y2="66" stroke="black"/><text x="87.0" y="80" font-size="10" font-family="monospace" font-weight="normal">6h</text><line x1="160.0" y1="54" x2="160.0" y2="66" stroke="black"/><text x="152.0" y="80" font-size="10" font-family="monospace" font-weight="normal">12h</text><line x1="225.0" y1="54" x2="225.0" y2="66" stroke="black"/><text x="217.0" y="80" font-size="10" font-family="monospace" font-weight="normal">18h</text><line x1="290.0" y1="54" x2="290.0" y2="66" stroke="black"/><text x="282.0" y="80" font-size="10" font-family="monospace" font-weight="normal">24h</text><rect x="203.33333333333334" y="50" width="54.16666666666666" height="20" fill="white" stroke="black" stroke-dasharray="2 2"/><text x="205.33333333333334" y="46" font-size="9" font-family="monospace" font-weight="normal">峰段</text><line x1="192.5" y1="42" x2="192.5" y2="58" stroke="black"/><circle cx="192.5" cy="40" r="3" fill="white" stroke="black"/><text x="162.5" y="32" font-size="9" font-family="monospace" font-weight="normal">预冷</text><line x1="214.16666666666666" y1="42" x2="214.16666666666666" y2="58" stroke="black"/><circle cx="214.16666666666666" cy="40" r="3" fill="white" stroke="black"/><text x="184.16666666666666" y="32" font-size="9" font-family="monospace" font-weight="normal">PW放电</text><line x1="279.16666666666663" y1="42" x2="279.16666666666663" y2="58" stroke="black"/><circle cx="279.16666666666663" cy="40" r="3" fill="white" stroke="black"/><text x="200" y="32" font-size="9" font-family="monospace" font-weight="normal">EV充电</text></svg></div>
+        </div>
+    </div>
+<div class="screen" id="s-4-1">
+        <h2>4.1 节省报告总览（“银行级收据”）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="section picker"><div class="label">日期选择器：本月</div><div class="select">本月</div></div><div class="summary"><div class="sumtitle">总节省（本月）</div><div class="sumvalue">$85.50</div></div><div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 320 160"><rect x="10" y="10" width="300" height="140" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><line x1="40" y1="20" x2="40" y2="130" stroke="black"/><line x1="40" y1="130" x2="300" y2="130" stroke="black"/><rect x="50.0" y="20.0" width="66.0" height="110.0" fill="white" stroke="black"/><text x="50.0" y="144" font-size="9" font-family="monospace" font-weight="normal">EV</text><text x="50.0" y="14.0" font-size="9" font-family="monospace" font-weight="normal">$40</text><rect x="130.0" y="61.25" width="66.0" height="68.75" fill="white" stroke="black"/><text x="130.0" y="144" font-size="9" font-family="monospace" font-weight="normal">HVAC</text><text x="130.0" y="55.25" font-size="9" font-family="monospace" font-weight="normal">$25</text><rect x="210.0" y="75.0" width="66.0" height="55.0" fill="white" stroke="black"/><text x="210.0" y="144" font-size="9" font-family="monospace" font-weight="normal">PW</text><text x="210.0" y="69.0" font-size="9" font-family="monospace" font-weight="normal">$20</text><text x="50" y="18" font-size="10" font-family="monospace" font-weight="normal">来源分解（示意）</text></svg></div><div class="card"><div class="ctitle">AI 洞察</div><div class="ctext">建议切换到 EV2-A，预计每年可多省 $250（示意）。</div></div>
+        </div>
+    </div>
+<div class="screen" id="s-4-2">
+        <h2>4.2 每日节省详情（收据）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="group">我们如何为你省钱</div><div class="ticket"><div class="ticket-head">— 费用节省收据（示意） —</div>
+<div class="ticket-title">EV 智能充电（00:00–03:00）</div>
+<pre class="mono">
+10 kWh × ($0.55 - $0.15) = $4.00
+基线：高峰充电；实际：低谷充电
+</pre>
+<div class="ticket-title">HVAC 预冷（14:00–16:00）</div>
+<pre class="mono">
+减少高峰运行 1 小时 = $0.50
+舒适度维持 21–24°C
+</pre>
+<div class="ticket-foot">合计：$4.50  （以上为线框示意，非真实计算）</div>
+</div>
+        </div>
+    </div>
+<div class="screen" id="s-5-1">
+        <h2>5.1 设备列表</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="devicecard"><div class="dev_title">Tesla Model Y</div><div class="dev_sub">已连接 · 电量 60%</div></div><div class="devicecard"><div class="dev_title">Powerwall</div><div class="dev_sub">已连接 · 电量 75%</div></div><div class="devicecard"><div class="dev_title">Nest 恒温器</div><div class="dev_sub">已连接 · 室温 23°C</div></div><div class="button primary">添加新设备</div>
+        </div>
+    </div>
+<div class="screen" id="s-5-2">
+        <h2>5.2 设备详情（EV 优化）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="metric"><div class="big">60%</div><div class="caption">当前 SoC · 已插枪</div></div><div class="note">计划于 00:00 低谷开始充电 · 预计成本 $3.50</div><div class="button secondary">立即充电（覆盖优化）</div><div class="listrow"><div class="left">准备就绪时间：7:00 AM</div><div class="right">编辑</div></div><div class="listrow"><div class="left">目标电量水平：80%</div><div class="right">编辑</div></div>
+        </div>
+    </div>
+<div class="screen" id="s-6-1">
+        <h2>优化策略（今日计划）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="section toggle"><div class="label">自动优化</div><div class="switch">ON</div></div><div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120"><rect x="10" y="10" width="300" height="100" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><line x1="30" y1="60" x2="290" y2="60" stroke="black"/><line x1="30.0" y1="54" x2="30.0" y2="66" stroke="black"/><text x="22.0" y="80" font-size="10" font-family="monospace" font-weight="normal">0h</text><line x1="95.0" y1="54" x2="95.0" y2="66" stroke="black"/><text x="87.0" y="80" font-size="10" font-family="monospace" font-weight="normal">6h</text><line x1="160.0" y1="54" x2="160.0" y2="66" stroke="black"/><text x="152.0" y="80" font-size="10" font-family="monospace" font-weight="normal">12h</text><line x1="225.0" y1="54" x2="225.0" y2="66" stroke="black"/><text x="217.0" y="80" font-size="10" font-family="monospace" font-weight="normal">18h</text><line x1="290.0" y1="54" x2="290.0" y2="66" stroke="black"/><text x="282.0" y="80" font-size="10" font-family="monospace" font-weight="normal">24h</text><rect x="203.33333333333334" y="50" width="54.16666666666666" height="20" fill="white" stroke="black" stroke-dasharray="2 2"/><text x="205.33333333333334" y="46" font-size="9" font-family="monospace" font-weight="normal">峰段</text><line x1="279.16666666666663" y1="42" x2="279.16666666666663" y2="58" stroke="black"/><circle cx="279.16666666666663" cy="40" r="3" fill="white" stroke="black"/><text x="200" y="32" font-size="9" font-family="monospace" font-weight="normal">EV开始</text><line x1="84.16666666666666" y1="42" x2="84.16666666666666" y2="58" stroke="black"/><circle cx="84.16666666666666" cy="40" r="3" fill="white" stroke="black"/><text x="54.16666666666666" y="32" font-size="9" font-family="monospace" font-weight="normal">EV完成</text><line x1="192.5" y1="42" x2="192.5" y2="58" stroke="black"/><circle cx="192.5" cy="40" r="3" fill="white" stroke="black"/><text x="162.5" y="32" font-size="9" font-family="monospace" font-weight="normal">预冷</text><line x1="214.16666666666666" y1="42" x2="214.16666666666666" y2="58" stroke="black"/><circle cx="214.16666666666666" cy="40" r="3" fill="white" stroke="black"/><text x="184.16666666666666" y="32" font-size="9" font-family="monospace" font-weight="normal">PW放电</text></svg></div><div class="bullet"><ul><li>EV 23:00 开始充电，05:00 完成</li><li>HVAC 15:00 预冷，对应16–21高峰</li><li>Powerwall 17–21 放电供家庭负载</li></ul></div>
+        </div>
+    </div>
+<div class="screen" id="s-7-1">
+        <h2>模拟与预演（明日）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="220" viewBox="0 0 320 220">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L6,3 z" fill="black" />
+      </marker>
+    </defs>
+    <rect x="10" y="10" width="300" height="200" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><rect x="135" y="85" width="50" height="50" rx="8" ry="8" fill="none" stroke="black"/><text x="145" y="115" font-size="11" font-family="monospace" font-weight="normal">家</text><circle cx="160" cy="35" r="16" fill="white" stroke="black"/><text x="149" y="38" font-size="11" font-family="monospace" font-weight="normal">太阳</text><circle cx="160" cy="185" r="16" fill="white" stroke="black"/><text x="151" y="188" font-size="11" font-family="monospace" font-weight="normal">电网</text><circle cx="70" cy="110" r="16" fill="white" stroke="black"/><text x="60" y="113" font-size="11" font-family="monospace" font-weight="normal">电池</text><circle cx="250" cy="110" r="16" fill="white" stroke="black"/><text x="244" y="113" font-size="11" font-family="monospace" font-weight="normal">EV</text><line x1="160" y1="51" x2="160" y2="85" stroke="black" marker-end="url(#arrow)"/><line x1="160" y1="135" x2="160" y2="169" stroke="black" marker-end="url(#arrow)"/><line x1="86" y1="110" x2="135" y2="110" stroke="black" marker-end="url(#arrow)"/><line x1="185" y1="110" x2="234" y2="110" stroke="black" marker-end="url(#arrow)"/><text x="166" y="74" font-size="10" font-family="monospace" font-weight="normal">→ 家 0.8kW</text><text x="166" y="153" font-size="10" font-family="monospace" font-weight="normal">家 → 电网 0kW</text><text x="90" y="105" font-size="10" font-family="monospace" font-weight="normal">电池 → 家 1.2kW</text><text x="188" y="105" font-size="10" font-family="monospace" font-weight="normal">家 → EV 0kW</text></svg></div><div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 320 160"><rect x="10" y="10" width="300" height="140" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><line x1="40" y1="30" x2="40" y2="140" stroke="black"/><line x1="40" y1="140" x2="300" y2="140" stroke="black"/><line x1="40.0" y1="140" x2="40.0" y2="145" stroke="black"/><text x="34.0" y="158" font-size="9" font-family="monospace" font-weight="normal">0</text><line x1="126.66666666666667" y1="140" x2="126.66666666666667" y2="145" stroke="black"/><text x="120.66666666666667" y="158" font-size="9" font-family="monospace" font-weight="normal">8</text><line x1="213.33333333333334" y1="140" x2="213.33333333333334" y2="145" stroke="black"/><text x="207.33333333333334" y="158" font-size="9" font-family="monospace" font-weight="normal">16</text><line x1="267.5" y1="140" x2="267.5" y2="145" stroke="black"/><text x="261.5" y="158" font-size="9" font-family="monospace" font-weight="normal">21</text><line x1="300.0" y1="140" x2="300.0" y2="145" stroke="black"/><text x="294.0" y="158" font-size="9" font-family="monospace" font-weight="normal">24</text><line x1="35" y1="140.0" x2="40" y2="140.0" stroke="black"/><text x="10" y="144.0" font-size="9" font-family="monospace" font-weight="normal">0%</text><line x1="35" y1="112.5" x2="40" y2="112.5" stroke="black"/><text x="10" y="116.5" font-size="9" font-family="monospace" font-weight="normal">25%</text><line x1="35" y1="85.0" x2="40" y2="85.0" stroke="black"/><text x="10" y="89.0" font-size="9" font-family="monospace" font-weight="normal">50%</text><line x1="35" y1="57.5" x2="40" y2="57.5" stroke="black"/><text x="10" y="61.5" font-size="9" font-family="monospace" font-weight="normal">75%</text><line x1="35" y1="30.0" x2="40" y2="30.0" stroke="black"/><text x="10" y="34.0" font-size="9" font-family="monospace" font-weight="normal">100%</text><path d="M40.0,52.0 L105.0,41.0 L170.0,35.5 L213.33333333333334,35.5 L267.5,101.5 L300.0,101.5" fill="none" stroke="black"/><text x="50" y="28" font-size="10" font-family="monospace" font-weight="normal">Powerwall SoC 预测</text></svg></div><div class="card"><div class="ctitle">账单预演</div><div class="ctext">峰时用电 X kWh · 预计费用 $Y；谷时用电 Z kWh · $W（与未优化对比）</div></div>
+        </div>
+    </div>
+<div class="screen" id="s-8-1">
+        <h2>账单上传（OCR / 手动）</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="tabs"><div class="tab active">OCR 上传</div><div class="tab">手动输入</div></div><div class="placeholder">上传区域 / 表单字段</div><div class="placeholder chart"><div class="pie"><svg xmlns="http://www.w3.org/2000/svg" width="220" height="160" viewBox="0 0 220 160"><rect x="10" y="10" width="200" height="140" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><line x1="110" y1="90" x2="176.57395614066075" y2="111.6311896062463" stroke="black" stroke-dasharray="4 3"/><text x="156.57395614066075" y="105.6311896062463" font-size="9" font-family="monospace" font-weight="normal">已管理</text><line x1="110" y1="90" x2="43.42604385933923" y2="68.36881039375372" stroke="black" stroke-dasharray="4 3"/><text x="23.42604385933923" y="62.36881039375372" font-size="9" font-family="monospace" font-weight="normal">未知</text><path d="M110,90 L110.0,30.0 A60,60 0 1,1 74.73288486245164,138.54101966249686 Z" fill="white" stroke="black"/><path d="M110,90 L74.73288486245164,138.54101966249686 A60,60 0 0,1 109.99999999999999,30.0 Z" fill="white" stroke="black"/></svg></div></div>
+        </div>
+    </div>
+<div class="screen" id="s-9-1">
+        <h2>通知中心</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="timeline"><div class="timeitem"><span class="dot"></span><span class="timetext">00:00 Powerwall 夜间充电（低谷）</span></div><div class="timeitem"><span class="dot"></span><span class="timetext">15:00 HVAC 预冷已启动</span></div><div class="timeitem"><span class="dot"></span><span class="timetext">18:00 Powerwall 放电（节省 $2.40/h）</span></div><div class="timeitem"><span class="dot"></span><span class="timetext">23:00 EV 开始充电</span></div></div>
+        </div>
+    </div>
+<div class="screen" id="s-10-1">
+        <h2>电价计划顾问</h2>
+        <div class="phone">
+            <div class="status"></div>
+            <div class="headerbar">Header / 标题栏</div>
+            <div class="card"><div class="ctitle">推荐：切换至 EV2-A</div><div class="ctext">预计每年可多省 $200（示意）</div></div><div class="placeholder chart"><svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 320 160"><rect x="10" y="10" width="300" height="140" rx="8" ry="8" fill="none" stroke="black" stroke-dasharray="4 3"/><line x1="40" y1="20" x2="40" y2="130" stroke="black"/><line x1="40" y1="130" x2="300" y2="130" stroke="black"/><rect x="50.0" y="20.0" width="66.0" height="110.0" fill="white" stroke="black"/><text x="50.0" y="144" font-size="9" font-family="monospace" font-weight="normal">当前</text><text x="50.0" y="14.0" font-size="9" font-family="monospace" font-weight="normal">$1000/年</text><rect x="130.0" y="42.0" width="66.0" height="88.0" fill="black" stroke="black"/><text x="130.0" y="144" font-size="9" font-family="monospace" font-weight="normal">方案A</text><text x="130.0" y="36.0" font-size="9" font-family="monospace" font-weight="bold">$800/年</text><polygon points="163.0,24.0 157.0,36.0 169.0,36.0" fill="black"/><text x="128.0" y="18.0" font-size="9" font-family="monospace" font-weight="bold">推荐</text><rect x="210.0" y="31.0" width="66.0" height="99.0" fill="white" stroke="black"/><text x="210.0" y="144" font-size="9" font-family="monospace" font-weight="normal">方案B</text><text x="210.0" y="25.0" font-size="9" font-family="monospace" font-weight="normal">$900/年</text><text x="50" y="18" font-size="10" font-family="monospace" font-weight="normal">电价计划年费用对比（示意）</text></svg></div><div class="listrow"><div class="left">查看费率结构与细节</div><div class="right">详情 ></div></div><div class="button primary">去切换计划</div>
+        </div>
+    </div>
+</div></body></html>
