@@ -45,10 +45,7 @@ const EnergyFlowChart: React.FC<EnergyFlowChartProps> = ({
     return flow?.value || '';
   };
 
-  const isFlowActive = (from: string, to: string) => {
-    const flow = getFlowForPath(from, to);
-    return flow?.active ?? false;
-  };
+
 
   return (
     <div className={`bg-gray-200 pt-[18px] pr-[18px] pb-[18px] pl-[18px] rounded-lg ${className}`}>

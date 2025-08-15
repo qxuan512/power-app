@@ -3,23 +3,7 @@ import { Switch } from "@heroui/react";
 
 import { MobileLayout } from "@/layouts/mobile";
 
-const timelineEvents = [
-  { time: "95.8%", type: "charge", label: "EV 开始", color: "bg-green-400" },
-  { time: "20.8%", type: "charge", label: "EV 完成", color: "bg-green-400" },
-  { time: "62.5%", type: "optimization", label: "预冷", color: "bg-gray-900" },
-  {
-    time: "70.8%",
-    type: "optimization",
-    label: "PW 放电",
-    color: "bg-gray-900",
-  },
-];
 
-const legendItems = [
-  { color: "bg-green-400", label: "充电事件" },
-  { color: "bg-gray-900", label: "优化操作" },
-  { color: "bg-red-300", label: "峰值时段" },
-];
 
 const strategyDetails = [
   "EV 23:00 开始充电，05:00 完成",

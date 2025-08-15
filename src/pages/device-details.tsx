@@ -6,8 +6,8 @@ import { MobileLayout } from "@/layouts/mobile";
 
 export default function DeviceDetailsPage() {
   const navigate = useNavigate();
-  const [readyTime, setReadyTime] = useState("7:00 AM");
-  const [targetLevel, setTargetLevel] = useState("80%");
+  const [readyTime] = useState("7:00 AM");
+  const [targetLevel] = useState("80%");
 
   const handleBack = () => {
     navigate("/device-management");
