@@ -1,8 +1,23 @@
-# Vite & HeroUI Template
+# Power App - Frontend Application
 
-This is a template for creating applications using Vite and HeroUI (v2).
+This is a frontend application developed based on the design wireframes in `app_wireframes_v2.html`.
 
-[Try it on CodeSandbox](https://githubbox.com/frontio-ai/vite-template)
+## Overview
+
+The Power App is a comprehensive energy optimization application that helps users manage their energy consumption, optimize EV charging, and maximize savings through intelligent automation.
+
+## Features
+
+Based on the wireframes, the application includes:
+
+- **Welcome & ROI Calculator**: Input user information to calculate potential energy savings
+- **Dashboard**: Real-time energy flow visualization and savings metrics
+- **Savings Reports**: Detailed breakdown of cost savings with charts and analytics
+- **Device Management**: Control and monitor connected devices (EV, Powerwall, Nest, etc.)
+- **Optimization Strategies**: AI-powered energy optimization planning
+- **Simulation & Preview**: Future energy usage predictions and cost estimates
+- **Bill Upload**: OCR and manual bill input for accurate tracking
+- **Notifications**: Real-time updates on energy optimization activities
 
 ## Technologies Used
 
@@ -13,38 +28,22 @@ This is a template for creating applications using Vite and HeroUI (v2).
 - [TypeScript](https://www.typescriptlang.org)
 - [Framer Motion](https://www.framer.com/motion)
 
-## How to Use
-
-To clone the project, run the following command:
-
-```bash
-git clone https://github.com/frontio-ai/vite-template.git
-```
+## Development
 
 ### Install dependencies
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
 ```bash
-npm install
+yarn install
 ```
 
 ### Run the development server
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
-### Setup pnpm (optional)
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+## Design Wireframes
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
+The application UI is based on comprehensive wireframes located in `app_wireframes_v2.html`, which include detailed screen designs for all major features and user flows.
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/frontio-ai/vite-template/blob/main/LICENSE).
